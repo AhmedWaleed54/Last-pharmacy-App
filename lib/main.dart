@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:last_gp/src/config/route.dart';
+import 'package:last_gp/src/pages/PaymentOnline.dart';
+import 'package:last_gp/src/pages/Pneumonia_Detection%20page.dart';
 import 'package:last_gp/src/pages/mainPage.dart';
+import 'package:last_gp/src/views/OnBoarding.dart';
 import 'package:last_gp/src/views/newSplashScreen.dart';
 import 'package:last_gp/src/widgets/customRoute.dart';
 
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
               builder: (BuildContext context) => MainPage(key: null, title: 'Pharmacy',));
         } else {
           return CustomRoute<bool>(
-              builder: (BuildContext context) => NewSplash());
+              builder: (BuildContext context) => OnboardingPage());
         }
       },
     );

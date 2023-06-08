@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:last_gp/src/pages/mainPage.dart';
 import '../pages/LoginPage.dart';
+import '../pages/SearchPage.dart';
 import '../pages/favorite_page.dart';
 import '../pages/myOrders.dart';
 import '../pages/patientInfo.dart';
@@ -22,6 +23,7 @@ class Routes {
       '/loginSuccess' : (_) => LoginSuccessSplash(),
       '/registerSuccess' : (_) => RegisterSuccessSplash(),
       '/updateSuccess' : (_) => UpdatedSuccessSplash (),
+      '/search' : (_) => MedicineSearchPage(),
     };
   }
 }

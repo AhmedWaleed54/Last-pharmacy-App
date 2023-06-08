@@ -207,11 +207,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar>
         }
         break;
 
-     /* case 1 :
+      case 1 :
         {
-          (Navigator.pushNamed(context, 'fav'));
+          (Navigator.pushNamed(context, '/search'));
         }
-        break;*/
+        break;
 
       case 2 :
         {
