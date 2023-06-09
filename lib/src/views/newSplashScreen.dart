@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../pages/LoginPage.dart';
+import 'OnBoarding.dart';
 class NewSplash extends StatelessWidget {
   const NewSplash({Key? key}) : super(key: key);
 
@@ -24,6 +25,6 @@ class NewSplash extends StatelessWidget {
         pageTransitionType: PageTransitionType.leftToRightWithFade,
         animationDuration: Duration(seconds: 1),
 
-        nextScreen: LoginScreen());
+        nextScreen: OnboardingPage());
   }
 }

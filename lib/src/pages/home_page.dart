@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   Future<void> _fetchMedicines() async {
-    final response = await http.get(Uri.parse('http://medibookidashbord.test/api/medicines?lang=en'));
+    final response = await http.get(Uri.parse('https://benaahadees.com/mediBookiDashbord/public/api/medicines?lang=en'));
     if (response.statusCode == 200) {
       setState(() {
         _response = json.decode(response.body);

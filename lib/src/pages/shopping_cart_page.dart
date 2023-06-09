@@ -16,7 +16,7 @@ class ShoppingCartPage extends StatefulWidget {
 }
 
 class _ShoppingCartPageState extends State<ShoppingCartPage> {
-  final String baseUrl = 'http://medibookidashbord.test/api';
+  final String baseUrl = 'https://benaahadees.com/mediBookiDashbord/public/api';
   final storage = FlutterSecureStorage();
 
   Future<void> countDownMedicineInCart(int medicineId) async {
@@ -81,7 +81,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   List<CartMedicine> cart = [];
   Future<List<CartMedicine>> getMedicineFromCart() async {
     final apiUrl =
-        'http://medibookidashbord.test/api/patient/orders?lang=en'; // Replace with your API endpoint URL
+        'https://benaahadees.com/mediBookiDashbord/public/api/patient/orders?lang=en'; // Replace with your API endpoint URL
     final token = await getToken();
 
     final response = await http.get(Uri.parse(apiUrl),

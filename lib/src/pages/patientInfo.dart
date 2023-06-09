@@ -15,7 +15,7 @@ class PatientInfoPage extends StatefulWidget {
 
 class _PatientInfoPageState extends State<PatientInfoPage> {
   Map<String, dynamic>? patientInfo;
-  final baseUrl = 'http://medibookidashbord.test/api';
+  final baseUrl = 'https://benaahadees.com/mediBookiDashbord/public/api';
   final storage = FlutterSecureStorage();
 
   Future<String?> getToken() async {

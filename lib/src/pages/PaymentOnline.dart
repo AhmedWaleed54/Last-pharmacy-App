@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:http/http.dart' as http;
 
 
 class PaymentWebView extends StatefulWidget {
@@ -9,15 +13,41 @@ class PaymentWebView extends StatefulWidget {
 }
 
 class _PaymentWebViewState extends State<PaymentWebView> {
-  final String paymentUrl = 'https://www.google.com.eg/';
+  final storage = FlutterSecureStorage();
+  var paymentUrl = 'https://www.google.com/';
+  final baseurl ='https://benaahadees.com/mediBookiDashbord/public/api';
   late final WebViewController controller;
+
+  Future<String?> getToken() async {
+    String? token = await storage.read(key: 'Token');
+    return token;
+  }
+
+  Future<void> _getWebView() async {
+    final token = await getToken();
+    final response = await http.post(Uri.parse('$baseurl/patient/payments'),
+        headers: {'Authorization': 'Bearer $token'},
+        body: {'status': '1'});
+        if (response.statusCode == 200) {
+    setState(() {
+    final _response = json.decode(response.body);
+    print(_response);
+    // paymentUrl = _response['details']['redirect_url'];
+    });
+    } else {
+    throw Exception('Failed to fetch Medicines');
+    }
+    }
+
+
 
   @override
   void initState() {
     super.initState();
+    _getWebView();
     controller = WebViewController()
       ..loadRequest(
-        Uri.parse('https://accept.paymobsolutions.com/api/acceptance/iframes/729770?payment_token=ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5WDJsa0lqb3hNVGM0TVRRMExDSmhiVzkxYm5SZlkyVnVkSE1pT2pnek1EQXdMQ0pqZFhKeVpXNWplU0k2SWtWSFVDSXNJbWx1ZEdWbmNtRjBhVzl1WDJsa0lqb3pNemMxTnpZM0xDSnZjbVJsY2w5cFpDSTZNVEkyTlRReU5UazFMQ0ppYVd4c2FXNW5YMlJoZEdFaU9uc2labWx5YzNSZmJtRnRaU0k2SW0xdmFHRnRaV1FpTENKc1lYTjBYMjVoYldVaU9pSmhiR2tpTENKemRISmxaWFFpT2lKT1FTSXNJbUoxYVd4a2FXNW5Jam9pVGtFaUxDSm1iRzl2Y2lJNklrNUJJaXdpWVhCaGNuUnRaVzUwSWpvaVRrRWlMQ0pqYVhSNUlqb2lUa0VpTENKemRHRjBaU0k2SWs1Qklpd2lZMjkxYm5SeWVTSTZJazVCSWl3aVpXMWhhV3dpT2lKdGIyaGhiV1ZrWVd4cFFDNWpiMjBpTENKd2FHOXVaVjl1ZFcxaVpYSWlPaUl3TVRFME5EQXhOakUyTUNJc0luQnZjM1JoYkY5amIyUmxJam9pVGtFaUxDSmxlSFJ5WVY5a1pYTmpjbWx3ZEdsdmJpSTZJazVCSW4wc0lteHZZMnRmYjNKa1pYSmZkMmhsYmw5d1lXbGtJanBtWVd4elpTd2laWGgwY21FaU9udDlMQ0p6YVc1bmJHVmZjR0Y1YldWdWRGOWhkSFJsYlhCMElqcG1ZV3h6WlN3aVpYaHdJam94TmpnMU9ERXhPVFF5TENKd2JXdGZhWEFpT2lJeE5UUXVNVGM1TGpFMU15NHhORE1pZlEuTnYxbWF4RWR6MTctMHV5SUM2Q01EMmNDUDN1c2xjVnhvcVRDMkJqYnIwaEQ2b0p0aURhWEQ0X2ZoWWR0QU1tWXdpaDBTeGlsNEhLaU1mRERjNmI1aUE='),
+        Uri.parse(paymentUrl),
       );
   }
 
@@ -29,10 +59,11 @@ class _PaymentWebViewState extends State<PaymentWebView> {
         title: Text('Payment'),
       ),
       body: SafeArea(
-        child:  WebViewWidget(
-          controller: controller,
+        child:  ElevatedButton(onPressed: _getWebView, child: Text('data'))
+        // WebViewWidget(
+        //   controller: controller,
 
-        ),
+        // ),
       ),
     );
   }

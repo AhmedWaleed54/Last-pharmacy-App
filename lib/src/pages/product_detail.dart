@@ -499,7 +499,7 @@ class ProductDetailsPage extends StatelessWidget {
   }
 
   void addToCart() async {
-    String baseUrl = 'http://medibookidashbord.test/api/patient/orders/';
+    String baseUrl = 'https://benaahadees.com/mediBookiDashbord/public/api/patient/orders/';
     int medicineId = id;
     final token = await getToken();
     final url = Uri.parse(baseUrl + '$medicineId');
@@ -534,7 +534,7 @@ class ProductDetailsPage extends StatelessWidget {
 
   void addToFavorites() async {
     String baseUrl =
-        'http://medibookidashbord.test/api/patient/wishlist/medicine';
+        'https://benaahadees.com/mediBookiDashbord/public/api/patient/wishlist/medicine';
     final token = await getToken();
     int medicineId = id;
     final url = Uri.parse(baseUrl);

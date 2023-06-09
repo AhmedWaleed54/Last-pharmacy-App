@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -11,8 +12,9 @@ class ImageUploadScreen extends StatefulWidget {
 }
 
 class _ImageUploadScreenState extends State<ImageUploadScreen> {
+  bool isPositive =true;
   File? _image;
-
+  String pnresult = "";
   Future _getImage() async {
     final image = await ImagePicker().getImage(
       source: ImageSource.gallery, // or ImageSource.camera for taking a photo
@@ -35,7 +37,7 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     final request = http.MultipartRequest('POST', url);
 
     // Attach the image file to the request
-    request.files.add(await http.MultipartFile.fromPath('image', _image!.path));
+    request.files.add(await http.MultipartFile.fromPath('file', _image!.path));
 
     // Send the request
     final response = await request.send();
@@ -51,8 +53,19 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
         textColor: Colors.white,
         timeInSecForIosWeb: 3,
       );
+      dynamic res = await response.stream.bytesToString();
+      final result = jsonDecode(res);
       print('Image uploaded!');
-
+      print(result['The prediction is']);
+      setState(() {
+        pnresult = result['The prediction is'];
+        if( result['The prediction is'] == 'Positive'){
+          isPositive = true;
+        }else {
+          isPositive = false;
+        }
+      });
+      
     } else {
       // Error occurred during image upload
       Fluttertoast.showToast(
@@ -86,8 +99,24 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
             ),
             ElevatedButton(
               onPressed: _uploadImage,
-              child: Text('Send to API'),
+              child: Text('Send'),
             ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(pnresult!,
+                  style: TextStyle(fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                    color: isPositive? Colors.red : Colors.green
+                  ),
+                  )
+
+                ],
+              ),
+            )
           ],
         ),
       ),

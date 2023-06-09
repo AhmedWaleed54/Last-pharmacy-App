@@ -27,7 +27,7 @@ class _RegisterPageState extends State<RegisterScreen> {
 
   Future<void> _signup() async {
     final response = await post(
-      Uri.parse('http://medibookidashbord.test/api/patient/register'),
+      Uri.parse('https://benaahadees.com/mediBookiDashbord/public/api/patient/register'),
       body: {
         'name': _nameController.text,
         'email': _emailController.text,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:last_gp/src/pages/LoginPage.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -65,6 +66,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               if (_currentPage == _onboardingData.length - 1) {
                 // Handle "Get Started" button tap
                 // e.g., navigate to the home screen
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
               } else {
                 _pageController.nextPage(
                   duration: const Duration(milliseconds: 300),

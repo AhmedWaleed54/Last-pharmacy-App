@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:last_gp/src/pages/trackOrders.dart';
 import '../themes/light_color.dart';
+import 'PaymentOnline.dart';
 
 class meanPayment extends StatefulWidget {
   const meanPayment({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _meanPaymentState extends State<meanPayment> {
     return token;
   }
   void selectPayment () async{
-    String baseUrl ='http://medibookidashbord.test/api/patient/payments';
+    String baseUrl ='https://benaahadees.com/mediBookiDashbord/public/api/patient/payments';
     final token =await getToken();
     int status = _selectedOption ;
     final url=Uri.parse(baseUrl) ;
@@ -101,12 +102,12 @@ class _meanPaymentState extends State<meanPayment> {
           ),
           // Add more RadioListTile widgets for additional options
           SizedBox(height: 50,),
-        ElevatedButton(onPressed:_isSelectedOne ? null : (){
+        ElevatedButton(onPressed:(){
 
                selectPayment();
                Navigator.of(context).pushReplacement(
                  MaterialPageRoute(
-                   builder: (BuildContext context) => OrderTrackingPage(),
+                   builder: (BuildContext context) => PaymentWebView(),
                  ),
                );
          },

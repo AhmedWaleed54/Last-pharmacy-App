@@ -17,14 +17,14 @@ class _CheckoutPageState extends State<CheckoutPage> with SingleTickerProviderSt
   late AnimationController _controller;
   late Animation<double> _animation;
   final storage =FlutterSecureStorage();
-  final baseUrl = 'http://127.0.0.1:8000/api';
+  final baseUrl = 'https://benaahadees.com/mediBookiDashbord/public/api';
   List<CartMedicine> orders =[];
   Future<String?> getToken() async {
     String? token = await storage.read(key: 'Token');
     return token;
   }
   Future<List<CartMedicine>> getMedicineOrderFromCart() async {
-    final apiUrl = 'http://medibookidashbord.test/api/patient/orders?lang=en';
+    final apiUrl = 'https://benaahadees.com/mediBookiDashbord/public/api/patient/orders?lang=en';
     final token = await getToken();
 
     final response = await http.get(Uri.parse(apiUrl),

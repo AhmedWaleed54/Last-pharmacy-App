@@ -13,7 +13,7 @@ class MedicineSearchPage extends StatefulWidget {
 
 class _MedicineSearchPageState extends State<MedicineSearchPage> {
   List<dynamic> searchResults = [];
-  final baseUrl = "http://medibookidashbord.test/api";
+  final baseUrl = "https://benaahadees.com/mediBookiDashbord/public/api";
 
   Future<void> searchMedicine(String medName) async {
     // Perform the API request to search for medicine using the name

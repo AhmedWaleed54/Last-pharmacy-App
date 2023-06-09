@@ -13,7 +13,7 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
-  final baseUrl = 'http://medibookidashbord.test/api';
+  final baseUrl = 'https://benaahadees.com/mediBookiDashbord/public/api';
   List<Favorite> favoriteMedicines = [];
   final storage =FlutterSecureStorage();
   Future<String?> getToken() async {
@@ -21,7 +21,7 @@ class _FavoritePageState extends State<FavoritePage> {
     return token;
   }
   Future<List<Favorite>> getFavoriteMedicines() async {
-    final url = 'http://medibookidashbord.test/api/patient/wishlist/medicine?lang=en';
+    final url = 'https://benaahadees.com/mediBookiDashbord/public/api/patient/wishlist/medicine?lang=en';
     final token = await getToken();
     final response = await http.get(Uri.parse(url),
       headers: {

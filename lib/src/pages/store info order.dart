@@ -40,7 +40,7 @@ class _PatientInformationFormState extends State<PatientInformationForm> {
 
 
   Future<void> storePatientInformationOrder(Map<String, dynamic> orderData) async {
-    final url = 'http://medibookidashbord.test/api/patient/orders?lang=en';
+    final url = 'https://benaahadees.com/mediBookiDashbord/public/api/patient/orders?lang=en';
     final token = await getToken();
     final response = await http.post(
       Uri.parse(url),
