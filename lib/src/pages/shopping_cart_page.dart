@@ -14,8 +14,19 @@ class ShoppingCartPage extends StatefulWidget {
   @override
   _ShoppingCartPageState createState() => _ShoppingCartPageState();
 }
+class Value {
+  static double? value;
+  static void setString(double newValue) {
+    value = newValue;
+  }
+
+  static double? getString() {
+    return value;
+  }
+}
 
 class _ShoppingCartPageState extends State<ShoppingCartPage> {
+
   final String baseUrl = 'https://benaahadees.com/mediBookiDashbord/public/api';
   final storage = FlutterSecureStorage();
 
@@ -276,7 +287,9 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   }
 
   double calculateTotal() {
-    return cart.fold(
+    double totalPrice = cart.fold(
         0, (total, medicine) => total + medicine.price! * medicine.quantity!);
+    Value.setString(totalPrice);
+    return totalPrice;
   }
 }

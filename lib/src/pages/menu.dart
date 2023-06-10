@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../themes/light_color.dart';
 import 'LoginPage.dart';
+import 'Pneumonia_Detection page.dart';
 
 class menuBar extends StatefulWidget {
   @override
@@ -114,6 +115,24 @@ class _menuBarState extends State<menuBar>{
           Card(
             elevation: 1.5,
             child: ListTile(
+              leading: FaIcon(FontAwesomeIcons.lungs),
+              title: Container(
+                padding: EdgeInsets.only(bottom: 6),
+                child: Text('Pneumonia Detection',
+                  style:TextStyle(fontSize: 18,fontFamily: 'ConcertOne',fontWeight: FontWeight.bold),),
+              ),
+              onTap: (){
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => ImageUploadScreen()),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 8,),
+          Card(
+            elevation: 1.5,
+            child: ListTile(
               leading: FaIcon(FontAwesomeIcons.arrowLeft),
               title: Container(
                 padding: EdgeInsets.only(bottom: 6),
@@ -127,7 +146,8 @@ class _menuBarState extends State<menuBar>{
                 );
               },
             ),
-          )
+          ),
+
 
         ],
 

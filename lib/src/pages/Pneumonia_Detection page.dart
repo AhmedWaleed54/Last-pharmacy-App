@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
+import '../themes/light_color.dart';
+
 
 class ImageUploadScreen extends StatefulWidget {
   @override
@@ -84,6 +86,9 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        leading: IconButton(icon: Icon(Icons.arrow_back_rounded), onPressed: () { Navigator.pushReplacementNamed(context, '/'); },),
+        backgroundColor: LightColor.lightBlue,
         title: Text('Image Upload'),
       ),
       body: Center(

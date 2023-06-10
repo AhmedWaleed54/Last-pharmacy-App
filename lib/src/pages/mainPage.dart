@@ -74,7 +74,7 @@ class _MainPageState extends State<MainPage> {
           fit: StackFit.expand,
           children: <Widget>[
             Container(
-              // height: AppTheme.fullHeight(context) ,
+              height: AppTheme.fullHeight(context) ,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [

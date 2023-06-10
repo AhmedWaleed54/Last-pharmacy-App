@@ -154,11 +154,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _productWidget() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+      margin: EdgeInsets.symmetric(horizontal: 10),
       width: AppTheme.fullWidth(context),
       height: AppTheme.fullHeight(context),
       child: GridView.count(
-        mainAxisSpacing: 20,
+        mainAxisSpacing: 8,
         crossAxisSpacing: 10,
         scrollDirection: Axis.vertical,
         crossAxisCount: 2,
@@ -223,10 +223,11 @@ class _MyHomePageState extends State<MyHomePage> {
       centerTitle: true,),
       drawer:  menuBar(),
       body: Container(
-        height:AppTheme.fullHeight(context)-50, //MediaQuery.of(context).size.height - 210,
+        // height:AppTheme.fullHeight(context), //MediaQuery.of(context).size.height - 210,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          dragStartBehavior: DragStartBehavior.down,
+          scrollDirection: Axis.vertical,
+          physics: ScrollPhysics(),
+          dragStartBehavior: DragStartBehavior.start,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

@@ -146,13 +146,13 @@ class _CheckoutPageState extends State<CheckoutPage> with SingleTickerProviderSt
                   final order = orders[index];
                   bool IsQuantityOne =(order.quantity==1);
                   return Container(
-                    height:90,
+                    height:120,
                     width: 150,
                     child: Card(
                       color: Colors.blueGrey.shade100,
                       shadowColor: Colors.black87,
                       elevation: 10,
-                      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                       child: ListTile(
                         leading: Image.network(order.image!,
                         height: 80,width: 70,),

@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
               builder: (BuildContext context) => MainPage(key: null, title: 'Pharmacy',));
         } else {
           return CustomRoute<bool>(
-              builder: (BuildContext context) => ImageUploadScreen());
+              builder: (BuildContext context) => NewSplash());
         }
       },
     );

@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:last_gp/src/pages/shopping_cart_page.dart';
 import '../themes/light_color.dart';
 import 'PaymentSuccess.dart';
 import 'checkoutPage.dart';
@@ -32,6 +33,7 @@ class _PatientInformationFormState extends State<PatientInformationForm> {
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _stateController = TextEditingController();
   final TextEditingController _zipController = TextEditingController();
+  double? totalPrice = Value.getString();
 
   Future<String?> getToken() async {
     String? token = await storage.read(key: 'Token');
@@ -93,7 +95,7 @@ class _PatientInformationFormState extends State<PatientInformationForm> {
                     'city': _cityController.text,
                     'state': _stateController.text,
                     'zip_code': _zipController.text,
-
+                    'total' :  totalPrice.toString()
                   };
 
                   storePatientInformationOrder(orderData)

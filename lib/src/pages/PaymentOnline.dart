@@ -14,7 +14,7 @@ class PaymentWebView extends StatefulWidget {
 
 class _PaymentWebViewState extends State<PaymentWebView> {
   final storage = FlutterSecureStorage();
-  var paymentUrl = 'https://www.google.com/';
+  String? paymentUrl ;
   final baseurl ='https://benaahadees.com/mediBookiDashbord/public/api';
   late final WebViewController controller;
 
@@ -23,31 +23,41 @@ class _PaymentWebViewState extends State<PaymentWebView> {
     return token;
   }
 
-  Future<void> _getWebView() async {
+  Future<String?> _getWebView() async {
     final token = await getToken();
     final response = await http.post(Uri.parse('$baseurl/patient/payments'),
         headers: {'Authorization': 'Bearer $token'},
         body: {'status': '1'});
+    // print(token);
         if (response.statusCode == 200) {
-    setState(() {
-    final _response = json.decode(response.body);
-    print(_response);
+          final _response = json.decode(response.body);
+    // setState(() {
+    // print(_response);
     // paymentUrl = _response['details']['redirect_url'];
-    });
+    // print(paymentUrl);
+    // });
+          print(_response['details']['redirect_url']);
+          return _response['details']['redirect_url'];
     } else {
     throw Exception('Failed to fetch Medicines');
     }
     }
 
+  Future<void> _getWeb()  async {
+    setState(()  {
+      paymentUrl = _getWebView() as String?;
+      print(paymentUrl);
+    });
+  }
 
 
   @override
   void initState() {
     super.initState();
-    _getWebView();
+    _getWeb();
     controller = WebViewController()
       ..loadRequest(
-        Uri.parse(paymentUrl),
+        Uri.parse(paymentUrl!),
       );
   }
 
@@ -59,10 +69,16 @@ class _PaymentWebViewState extends State<PaymentWebView> {
         title: Text('Payment'),
       ),
       body: SafeArea(
-        child:  ElevatedButton(onPressed: _getWebView, child: Text('data'))
-        // WebViewWidget(
-        //   controller: controller,
-
+        child: WebViewWidget(
+        controller: controller
+      )
+        // ElevatedButton(
+        //   onPressed: () {
+        //     WebViewWidget(
+        //     controller: controller,
+        //
+        //   ); },
+        //   child: Text(paymentUrl)
         // ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:last_gp/src/pages/trackOrders.dart';
 import '../themes/light_color.dart';
 import 'PaymentOnline.dart';
+import 'PaymentSuccess.dart';
 
 class meanPayment extends StatefulWidget {
   const meanPayment({Key? key}) : super(key: key);
@@ -105,9 +106,12 @@ class _meanPaymentState extends State<meanPayment> {
         ElevatedButton(onPressed:(){
 
                selectPayment();
+               _isSelectedOne ==true?
                Navigator.of(context).pushReplacement(
                  MaterialPageRoute(
-                   builder: (BuildContext context) => PaymentWebView(),
+                   builder: (BuildContext context) => PaymentWebView())):Navigator.of(context).pushReplacement(
+                   MaterialPageRoute(
+                       builder: (BuildContext context) => PaymentSuccessPage()
                  ),
                );
          },

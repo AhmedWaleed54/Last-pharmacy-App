@@ -11,7 +11,7 @@ class LoginSuccessSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(splash:
-    Lottie.asset('81243-login-successfully.json'),
+    Lottie.asset('assets/81243-login-successfully.json'),
     // Container(
     //   margin: EdgeInsets.only(left: 20),
     //   child: Lottie.asset('81243-login-successfully.json'),

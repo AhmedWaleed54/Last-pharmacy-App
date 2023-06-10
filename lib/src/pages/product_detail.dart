@@ -613,42 +613,40 @@ class ProductDetailsPage extends StatelessWidget {
                     Text(
                       title,
                       style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
-                      width: 180,
+
+
+                  ],
+                ),
+                SizedBox(height: 8),
+                Row(
+                  children: [
+                    Text(
+                      '\$${price.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: LightColor.lightBlue,
+                      ),
                     ),
+                    SizedBox(width: 200),
                     IconButton(
                       icon: Icon(Icons.favorite
-                          // isFav ? Icons.favorite : Icons.favorite_border,
-                          // color: isFav ? Colors.red : Colors.grey,
-                          ),
+                        // isFav ? Icons.favorite : Icons.favorite_border,
+                        // color: isFav ? Colors.red : Colors.grey,
+                      ),
                       onPressed: () {
                         // Toggle the favorite state
 
                         addToFavorites();
                         // Perform additional actions like adding/removing from favorites
-                        // if (isFav) {
-                        //   // Add to favorites
-                        //
-                        // } else {
-                        //   // Remove from favorites
-                        //
-                        // }
+
                       },
                     ),
                   ],
-                ),
-                SizedBox(height: 8),
-                Text(
-                  '\$${price.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
                 ),
                 SizedBox(height: 16),
                 Text(

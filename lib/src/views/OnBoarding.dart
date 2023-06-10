@@ -17,14 +17,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
       'image': 'assets/98651-app-onboarding-03.json',
     },
     {
-      'title': 'Find Nearest Pharmacy',
-      'description': 'Locate pharmacies near your area',
-      'image': 'assets/78072-map-pin-location.json',
+      'title': 'Pneumonia Detection',
+      'description': 'Check your x-ray',
+      'image': 'assets/84935-x-ray-exam.json',
     },
     {
-      'title': 'Get Medication Reminders',
-      'description': 'Never miss a dose again',
-      'image': 'assets/images/onboarding3.png',
+      'title': 'Login Easily',
+      'description': 'Login and register easily',
+      'image': 'assets/38435-register.json',
     },
   ];
 
